@@ -1,35 +1,25 @@
 import app from 'flarum/common/app';
 import Widget, { WidgetAttrs } from 'flarum/extensions/afrux-forum-widgets-core/common/components/Widget';
+import { extName } from '../../r';
 
-interface HtmlWidgetAttrs extends WidgetAttrs {
+interface TrendsWidgetAttrs extends WidgetAttrs {
 
 }
-const htmlId = "liplum-html-widget"
 
-export default class HtmlWidgetWidget extends Widget<HtmlWidgetAttrs> {
+export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
   className(): string {
-    return 'liplum-html-widget'
+    return 'liplum-trends-widget'
   }
 
   icon(): string {
-    const icon = app.forum.attribute<string>('liplum-html-widget.icon');
-    return icon
+    return "fas fa-fire-alt"
   }
 
   title(): string {
-    const title = app.forum.attribute<string>('liplum-html-widget.title');
-    return title
+    return app.translator.trans(`${extName}.forum.widget.title`) as string
   }
 
   content() {
-    return <div id={htmlId}></div>;
-  }
-
-  oncreate(vnode): void {
-    const innerHtml = app.forum.attribute<string>('liplum-html-widget.innerHtml');
-    const e = document.getElementById(htmlId)
-    if (e) {
-      e.innerHTML = innerHtml
-    }
+    return <div></div>
   }
 }
