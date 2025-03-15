@@ -1,0 +1,51 @@
+{
+  "name": "liplum/flarum-trends-widget",
+  "description": "The widget to display trending discussions for Flarum",
+  "version": "0.1.0",
+  "keywords": [
+    "flarum",
+    "flarum-extension",
+    "flarum-ext",
+    "widget",
+    "afrux",
+    "hot",
+    "popular",
+    "trends",
+    "trending"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+    "flarum/core": "^1.2",
+    "afrux/forum-widgets-core": "^0.1.0",
+    "liplum/flarum-trends": "dev-master"
+  },
+  "authors": [
+    {
+      "name": "Liplum",
+      "homepage": "https://liplum.net/",
+      "email": "Li_plum@outlook.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/liplum/flarum-trends-widget/issues",
+    "source": "https://github.com/liplum/flarum-trends-widget"
+  },
+  "autoload": {
+    "psr-4": {
+      "Liplum\\TrendsWidget\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "Trends Widget",
+      "category": "feature",
+      "icon": {
+        "name": "fas fa-fire-alt",
+        "backgroundColor": "#e34c26",
+        "color": "#ffffff"
+      }
+    }
+  }
+}

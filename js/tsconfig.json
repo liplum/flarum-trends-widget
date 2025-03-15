@@ -1,0 +1,22 @@
+{
+  "extends": "flarum-tsconfig",
+  "include": [
+    "src/**/*",
+    "../vendor/flarum/core/js/dist-typings/@types/**/*"
+, "webpack.config.mjs"  ],
+  "files": [
+    "shims.d.ts"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noImplicitAny": false,
+    "paths": {
+      "flarum/*": [
+        "../vendor/flarum/core/js/dist-typings/*"
+      ],
+      "flarum/extensions/afrux-forum-widgets-core/*": [
+        "../vendor/afrux/forum-widgets-core/js/dist-typings/*"
+      ]
+    }
+  }
+}
