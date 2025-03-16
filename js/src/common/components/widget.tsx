@@ -66,9 +66,6 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
       items.add(
         trend.id,
         <div style={{
-          marginBottom: '10px',
-          padding: '10px',
-          borderBottom: '1px solid #eee',
           // Use flexbox for layout
           display: 'flex',
           // Distribute space between title and comments
@@ -84,11 +81,11 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
           >
             {trend.attributes.title}
           </Link>
-          <div style={{
+            <div style={{
             fontSize: '0.8em',
-            color: '#888',
-            marginTop: '5px'
-          }}>
+            color: this.trends.indexOf(trend) < 3 ? 'red' : undefined,
+            marginTop: '5px',
+            }}>
             {trend.attributes.commentCount}
           </div>
         </div>
