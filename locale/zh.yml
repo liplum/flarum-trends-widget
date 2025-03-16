@@ -2,3 +2,4 @@ liplum-html-widget:
   forum:
     widget:
       title: 热门话题
+      empty: 暂无热门话题

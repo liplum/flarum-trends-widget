@@ -2,3 +2,4 @@ liplum-html-widget:
   forum:
     widget:
       title: Trending Topics
+      empty: No trending topics yet
