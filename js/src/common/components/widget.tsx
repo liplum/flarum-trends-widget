@@ -65,18 +65,41 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
     this.trends.forEach((trend) => {
       items.add(
         trend.id,
-        <div className="liplum-trends-item">
-          <Link href={trend.attributes.shareUrl}>
+        <div style={{
+          marginBottom: '10px',
+          padding: '10px',
+          borderBottom: '1px solid #eee',
+          // Use flexbox for layout
+          display: 'flex',
+          // Distribute space between title and comments
+          justifyContent: 'space-between',
+          // Align items vertically in the center
+          alignItems: 'center',
+        }}
+        >
+          <Link href={trend.attributes.shareUrl}
+            style={{
+              fontWeight: 'bold'
+            }}
+          >
             {trend.attributes.title}
           </Link>
-          <div className="liplum-trends-meta">
-            {app.translator.trans(`${extName}.forum.widget.comments`, { count: trend.attributes.commentCount })}
+          <div style={{
+            fontSize: '0.8em',
+            color: '#888',
+            marginTop: '5px'
+          }}>
+            {trend.attributes.commentCount}
           </div>
         </div>
       );
     });
 
-    return <div className="liplum-trends-list">{items.toArray()}</div>;
+    return <div style={{
+      padding: '10px'
+    }}>
+      {items.toArray()}
+    </div>;
   }
 
 
