@@ -89,7 +89,7 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
     this.loading = true;
     app.request<TrendingDiscussionsResponse>({
       method: 'GET',
-      url: app.forum.attribute('apiUrl') + '/trends',
+      url: app.forum.attribute('apiUrl') + '/trends/recent',
     })
       .then((response) => {
         this.trends = response.data;
