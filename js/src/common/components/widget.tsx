@@ -62,39 +62,25 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
 
     const items = new ItemList();
 
-    this.trends.forEach((trend) => {
+    this.trends.forEach((trend, index) => {
       items.add(
         trend.id,
-        <div style={{
-          // Use flexbox for layout
-          display: 'flex',
-          // Distribute space between title and comments
-          justifyContent: 'space-between',
-          // Align items vertically in the center
-          alignItems: 'center',
-        }}
-        >
-          <Link href={trend.attributes.shareUrl}
-            style={{
-              fontWeight: 'bold'
-            }}
-          >
-            {trend.attributes.title}
-          </Link>
-          <div style={{
-            fontSize: '0.8em',
-            color: this.trends.indexOf(trend) < 3 ? 'red' : undefined,
-            marginTop: '5px',
+        <Link
+          href={trend.attributes.shareUrl}
+          style={{
+            fontWeight: 'bold',
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: 2,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
           }}>
-            {trend.attributes.commentCount}
-          </div>
-        </div>
+          {`${index + 1} ${trend.attributes.title}`}
+        </Link>
       );
     });
 
-    return <div style={{
-      padding: '10px'
-    }}>
+    return <div>
       {items.toArray()}
     </div>;
   }
