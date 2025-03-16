@@ -1,5 +1,14 @@
 liplum-trends-widget:
-  forum:
+  admin:
+    recentDays:
+      label: Recent Days
+      help: The number of days to consider for recent discussions. Default is 7 days. Leave empty to use the default from the "liplum-trends" extension widget.
+    limit:
+      label: Discussion Limit
+      help: The maximum number of discussions to return. Default is 10 discussions. Leave empty to use the default from the "liplum-trends" extension widget.
+    hotSpotHours:
+      label: Hot Spot Hours
+      help: The number of hours to consider for recent hot spot activity. Discussions with activity within this timeframe will have a higher weight in the ranking. Default is 24 hours. Leave empty to use the default from the "liplum-trends" extension widget.
     widget:
       title: Trending Topics
       empty: No trending topics yet

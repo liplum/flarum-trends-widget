@@ -1,4 +1,14 @@
 liplum-trends-widget:
+  admin:
+    recentDays:
+      label: 最近几天
+      help: 考虑最近讨论的天数。留空时将回退到"liplum-trends"扩展控件。
+    limit:
+      label: 讨论限制
+      help: 返回的讨论数量上限。留空时将回退到"liplum-trends"扩展控件。
+    hotSpotHours:
+      label: 热点小时
+      help: 考虑最近热点活动的小时数。在此时间范围内有活动的讨论将在排名中具有更高的权重。留空时将回退到"liplum-trends"扩展控件。
   forum:
     widget:
       title: 热门话题
