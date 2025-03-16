@@ -63,20 +63,23 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
     const items = new ItemList();
 
     this.trends.forEach((trend, index) => {
+      const isHot = index < 3;
       items.add(
         trend.id,
-        <Link
-          href={trend.attributes.shareUrl}
-          style={{
-            fontWeight: 'bold',
-            display: '-webkit-box',
-            WebkitBoxOrient: 'vertical',
-            WebkitLineClamp: 2,
-            overflow: 'hidden',
-            textOverflow: 'ellipsis'
-          }}>
-          {`${index + 1} ${trend.attributes.title}`}
-        </Link>
+        <div>
+          <Link
+            href={trend.attributes.shareUrl}
+            style={{
+              display: '-webkit-box',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: 2,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
+            }}>
+            <span style={{ fontWeight: isHot ? 'bold' : undefined }}>{index + 1}</span>
+            <span style={{ marginLeft: '5px' }}>{trend.attributes.title}</span>
+          </Link>
+        </div>
       );
     });
 

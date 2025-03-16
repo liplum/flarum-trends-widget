@@ -10,8 +10,8 @@ export default function (app: Application) {
       component: TrendsWidget,
       isDisabled: false,
       isUnique: true,
-      placement: 'end',
-      position: 2,
+      placement: 'top',
+      position: 1,
     })
     .extend(app, extName);
 }
