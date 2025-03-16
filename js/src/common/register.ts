@@ -4,12 +4,11 @@ import TrendsWidget from './components/widget';
 import { extName } from '../r';
 
 export default function (app: Application) {
-  const isTrendsExtensionEnabled = app.data.extensions.find((ext) => ext.id === 'liplum-trends');
   new Widgets()
     .add({
       key: 'liplum-trends-widget',
       component: TrendsWidget,
-      isDisabled: () => false,
+      isDisabled: false,
       isUnique: true,
       placement: 'end',
       position: 2,
