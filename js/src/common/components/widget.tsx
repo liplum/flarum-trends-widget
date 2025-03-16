@@ -81,11 +81,11 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
           >
             {trend.attributes.title}
           </Link>
-            <div style={{
+          <div style={{
             fontSize: '0.8em',
             color: this.trends.indexOf(trend) < 3 ? 'red' : undefined,
             marginTop: '5px',
-            }}>
+          }}>
             {trend.attributes.commentCount}
           </div>
         </div>
@@ -105,21 +105,27 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
     this.fetchTrends();
   }
 
-  fetchTrends() {
+  async fetchTrends() {
     this.loading = true;
-    app.request<TrendingDiscussionsResponse>({
-      method: 'GET',
-      url: app.forum.attribute('apiUrl') + '/trends/recent',
-    })
-      .then((response) => {
-        this.trends = response.data;
-        this.loading = false;
-        m.redraw();
-      })
-      .catch((error) => {
-        console.error('Error fetching trends:', error);
-        this.loading = false;
-        m.redraw();
+    const recentDays = app.forum.attribute<number | undefined>(`${extName}.recentDays`);
+    const limit = app.forum.attribute<number | undefined>(`${extName}.limit`);
+    const hotSpotHours = app.forum.attribute<number | undefined>(`${extName}.hotSpotHours`);
+    try {
+      const response = await app.request<TrendingDiscussionsResponse>({
+        method: 'GET',
+        url: app.forum.attribute('apiUrl') + '/trends/recent',
+        params: {
+          recentDays,
+          limit,
+          hotSpotHours,
+        },
       });
+      this.trends = response.data;
+    } catch (error) {
+      console.error('Error fetching trends:', error);
+    } finally {
+      this.loading = false;
+      m.redraw();
+    }
   }
 }
