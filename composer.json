@@ -1,7 +1,6 @@
 {
   "name": "liplum/flarum-trends-widget",
   "description": "The widget to display trending discussions for Flarum",
-  "version": "0.1.0",
   "keywords": [
     "flarum",
     "flarum-extension",
