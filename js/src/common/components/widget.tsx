@@ -110,15 +110,15 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
     const recentDays = app.forum.attribute<number | undefined>(`${extName}.recentDays`);
     const limit = app.forum.attribute<number | undefined>(`${extName}.limit`);
     const hotSpotHours = app.forum.attribute<number | undefined>(`${extName}.hotSpotHours`);
+    const params: Record<string, number> = {};
+    if (recentDays) params.recentDays = recentDays;
+    if (limit) params.limit = limit;
+    if (hotSpotHours) params.hotSpotHours = hotSpotHours;
     try {
       const response = await app.request<TrendingDiscussionsResponse>({
         method: 'GET',
         url: app.forum.attribute('apiUrl') + '/trends/recent',
-        params: {
-          recentDays,
-          limit,
-          hotSpotHours,
-        },
+        params,
       });
       this.trends = response.data;
     } catch (error) {
