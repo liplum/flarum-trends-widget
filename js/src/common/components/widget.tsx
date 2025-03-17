@@ -83,7 +83,9 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
       );
     }
 
-    return <div className="liplum-trends-container">
+    return <div className={
+      "liplum-trends-container" + (this.trends.length > 5 ? ' liplum-trends-container-large' : '')
+    }>
       {items.toArray()}
     </div>;
   }
