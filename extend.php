@@ -16,13 +16,7 @@ return [
 
   (new Extend\Settings)
     ->serializeToForum(
-      'liplum-trends-widget.recentDays',
-      'liplum-trends-widget.recentDays',
-    )->serializeToForum(
       'liplum-trends-widget.limit',
       'liplum-trends-widget.limit',
-    )->serializeToForum(
-      'liplum-trends-widget.hotSpotHours',
-      'liplum-trends-widget.hotSpotHours',
     ),
 ];
