@@ -15,6 +15,7 @@ return [
   new Extend\Locales(__DIR__ . '/locale'),
 
   (new Extend\Settings)
+    ->default('liplum-trends.limit', 5)
     ->serializeToForum(
       'liplum-trends-widget.limit',
       'liplum-trends-widget.limit',
