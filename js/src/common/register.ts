@@ -8,7 +8,7 @@ export default function (app: Application) {
     .add({
       key: 'liplum-trends-widget',
       component: TrendsWidget,
-      isDisabled: false,
+      isDisabled: () => !("liplum-trends" in flarum.extensions),
       isUnique: true,
       placement: 'top',
       position: 1,

@@ -5,15 +5,22 @@ import LoadingIndicator from 'flarum/common/components/LoadingIndicator';
 import ItemList from 'flarum/common/utils/ItemList';
 import Link from 'flarum/common/components/Link';
 
+interface TrendingDiscussionsResponse {
+  data: TrendingDiscussion[];
+}
+
 interface TrendingDiscussion {
   type: 'discussions';
   id: string;
   attributes: {
     title: string;
     commentCount: number;
+    participantCount: number;
+    viewCount: number;
     createdAt: string;
     lastActivityAt: string;
     shareUrl: string;
+    trendingScore: number;
   };
   relationships: {
     user: {
@@ -26,10 +33,6 @@ interface TrendingDiscussion {
       };
     };
   };
-}
-
-interface TrendingDiscussionsResponse {
-  data: TrendingDiscussion[];
 }
 
 interface TrendsWidgetAttrs extends WidgetAttrs {
@@ -62,7 +65,8 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
 
     const items = new ItemList();
 
-    this.trends.forEach((trend, index) => {
+    for (let index = 0; index < this.trends.length; index++) {
+      const trend = this.trends[index];
       const isHot = index < 3;
       items.add(
         trend.id,
@@ -80,9 +84,10 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
             <span>{index + 1}</span>
             <span style={{ marginLeft: '5px' }}>{trend.attributes.title}</span>
           </Link>
-        </div>
+        </div>,
+        trend.attributes.trendingScore,
       );
-    });
+    }
 
     return <div>
       {items.toArray()}
@@ -97,13 +102,9 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
 
   async fetchTrends() {
     this.loading = true;
-    const recentDays = app.forum.attribute<number | undefined>(`${extName}.recentDays`);
     const limit = app.forum.attribute<number | undefined>(`${extName}.limit`);
-    const hotSpotHours = app.forum.attribute<number | undefined>(`${extName}.hotSpotHours`);
     const params: Record<string, number> = {};
-    if (recentDays) params.recentDays = recentDays;
     if (limit) params.limit = limit;
-    if (hotSpotHours) params.hotSpotHours = hotSpotHours;
     try {
       const response = await app.request<TrendingDiscussionsResponse>({
         method: 'GET',
@@ -113,6 +114,8 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
       this.trends = response.data;
     } catch (error) {
       console.error('Error fetching trends:', error);
+      this.loading = false;
+      m.redraw();
     } finally {
       this.loading = false;
       m.redraw();
