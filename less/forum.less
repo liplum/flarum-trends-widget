@@ -1,0 +1,18 @@
+.liplum-trends-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .liplum-trends-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.liplum-trends-item {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

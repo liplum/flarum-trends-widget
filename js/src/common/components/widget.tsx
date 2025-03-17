@@ -70,26 +70,20 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
       const isHot = index < 3;
       items.add(
         trend.id,
-        <div>
-          <Link
-            href={trend.attributes.shareUrl}
-            style={{
-              display: '-webkit-box',
-              WebkitBoxOrient: 'vertical',
-              WebkitLineClamp: 2,
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              fontWeight: isHot ? 'bold' : undefined,
-            }}>
-            <span>{index + 1}.</span>
-            <span style={{ marginLeft: '5px' }}>{trend.attributes.title}</span>
-          </Link>
-        </div>,
+        <Link
+          className="liplum-trends-item"
+          href={trend.attributes.shareUrl}
+          style={{
+            fontWeight: isHot ? 'bold' : undefined,
+          }}>
+          <span>{index + 1}.</span>
+          <span style={{ marginLeft: '5px' }}>{trend.attributes.title}</span>
+        </Link>,
         trend.attributes.trendingScore,
       );
     }
 
-    return <div>
+    return <div className="liplum-trends-container">
       {items.toArray()}
     </div>;
   }
