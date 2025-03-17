@@ -16,8 +16,7 @@
   "license": "MIT",
   "require": {
     "flarum/core": "^1.2",
-    "afrux/forum-widgets-core": "^0.1.0",
-    "@liplum/flarum-trends": "^0.2.0"
+    "afrux/forum-widgets-core": "^0.1.0"
   },
   "authors": [
     {
