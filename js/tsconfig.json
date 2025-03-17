@@ -8,6 +8,7 @@
     "shims.d.ts"
   ],
   "compilerOptions": {
+    "jsx": "preserve",
     "baseUrl": ".",
     "noImplicitAny": false,
     "paths": {
