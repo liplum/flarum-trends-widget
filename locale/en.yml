@@ -3,6 +3,7 @@ liplum-trends-widget:
     limit:
       label: Discussion Limit
       help: The maximum number of discussions to return. Default is 10 discussions. Leave empty to use the default from the "liplum-trends" extension widget.
+  forum:
     widget:
       title: Trending Topics
       empty: No trending topics yet

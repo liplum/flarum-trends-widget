@@ -6,9 +6,11 @@ A [Flarum](http://flarum.org) extension to add a widget to display trending disc
 
 ### Installation
 
+To install the dependencies for this extension, run the following commands:
+
 ```bash
-composer require liplum/flarum-trends-widget
 composer require liplum/flarum-trends
+composer require liplum/flarum-trends-widget
 ```
 
 ### Update

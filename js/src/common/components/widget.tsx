@@ -81,7 +81,7 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
               textOverflow: 'ellipsis',
               fontWeight: isHot ? 'bold' : undefined,
             }}>
-            <span>{index + 1}</span>
+            <span>{index + 1}.</span>
             <span style={{ marginLeft: '5px' }}>{trend.attributes.title}</span>
           </Link>
         </div>,
