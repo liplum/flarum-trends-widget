@@ -71,11 +71,9 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
       items.add(
         trend.id,
         <Link
-          className="liplum-trends-item"
+          className={"liplum-trends-item" + isHot ? " liplum-trends-item-hot" : ""}
           href={trend.attributes.shareUrl}
-          style={{
-            fontWeight: isHot ? 'bold' : undefined,
-          }}>
+        >
           <span>{index + 1}.</span>
           <span style={{ marginLeft: '5px' }}>{trend.attributes.title}</span>
         </Link>,

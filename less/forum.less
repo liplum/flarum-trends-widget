@@ -3,15 +3,9 @@
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 640px) {
-  .liplum-trends-container {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 @media (min-width: 768px) {
   .liplum-trends-container {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -22,4 +16,8 @@
   -webkit-line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.liplum-trends-item-hot {
+  font-weight: bold;
 }
