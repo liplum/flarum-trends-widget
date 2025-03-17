@@ -76,7 +76,11 @@ export default class TrendsWidget extends Widget<TrendsWidgetAttrs> {
           }
           href={trend.attributes.shareUrl}
         >
-          <span>{index + 1}.</span>
+          {
+            isHot ?
+              <i className="fas fa-fire-alt" /> :
+              <span>{index + 1}.</span>
+          }
           <span style={{ marginLeft: '5px' }}>
             {trend.attributes.title}
           </span>
