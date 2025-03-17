@@ -1,11 +1,14 @@
 .liplum-trends-container {
   display: grid;
   grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
 }
 
-@media (min-width: 768px) {
+/* Responsive columns */
+@media (min-width: 300px) {
   .liplum-trends-container {
-    grid-template-columns: 1fr 1fr;
+    /* Adjust breakpoint as needed */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
 }
 
